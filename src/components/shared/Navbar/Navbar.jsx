@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import React, { useState } from "react";
 import { FaSearch, FaUser, FaShoppingBag } from "react-icons/fa";
 
@@ -16,6 +17,25 @@ const Navbar = () => {
     setActiveLink(link);
   };
 
+  const navblink = [
+    {
+      pathName: "Home",
+      path: "/",
+    },
+    {
+      pathName: "About",
+      path: "/about",
+    },
+    {
+      pathName: "Shop",
+      path: "/shop",
+    },
+    {
+      pathName: "Contact Us",
+      path: "/contact_us",
+    },
+  ];
+
   return (
     <div className=" bg-white shadow-sm py-7 fixed w-full z-40 ">
       <nav className=" container mx-auto">
@@ -25,16 +45,17 @@ const Navbar = () => {
 
           {/* Navigation Links (Desktop) */}
           <ul className="hidden md:flex space-x-10  font-medium mx-auto ">
-            {["Home", "About", "Shop", "Contact Us"].map((link) => (
-              <li
-                key={link}
-                onClick={() => handleLinkClick(link)}
+            {navblink.map((link) => (
+              <Link
+                href={link.path}
+                key={link?.pathName}
+                onClick={() => handleLinkClick(link.pathName)}
                 className={`cursor-pointer ${
                   activeLink === link ? "text-blue-600" : "text-gray-700"
                 } hover:text-blue-600 text-xl font-medium`}
               >
-                {link}
-              </li>
+                {link.pathName}
+              </Link>
             ))}
           </ul>
 
@@ -79,19 +100,22 @@ const Navbar = () => {
         {/* Mobile Navigation Links */}
         {isMobileMenuOpen && (
           <ul className="md:hidden bg-white border-t mt-2">
-            {["Home", "About", "Shop", "Contact Us"].map((link) => (
-              <li
-                key={link}
+            {navblink.map((link) => (
+              <Link
+                href={link?.path}
+                key={link?.pathName}
                 onClick={() => {
-                  handleLinkClick(link);
+                  handleLinkClick(link?.pathName);
                   setIsMobileMenuOpen(false);
                 }}
                 className={`block py-2 px-4 text-center ${
-                  activeLink === link ? "text-blue-600" : "text-gray-700"
+                  activeLink === link?.pathName
+                    ? "text-blue-600"
+                    : "text-gray-700"
                 } hover:bg-gray-100 hover:text-blue-600 cursor-pointer`}
               >
-                {link}
-              </li>
+                {link?.pathName}
+              </Link>
             ))}
           </ul>
         )}
