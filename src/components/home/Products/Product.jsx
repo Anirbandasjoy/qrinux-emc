@@ -3,12 +3,13 @@
 import React from "react";
 import StarRatings from "react-star-ratings";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
+import Link from "next/link";
 
 const Product = () => {
   return (
     <div className="bg-white border rounded-lg shadow-lg p-6 min-w-xs ">
       {/* Product Image */}
-      <div className="relative cursor-pointer">
+      <Link href="/product/1" className="relative cursor-pointer">
         <img
           src="https://i.ibb.co.com/jrkVqVc/download.jpg"
           alt="Laptop"
@@ -20,7 +21,7 @@ const Product = () => {
             Add to cart
           </button>
         </div>
-      </div>
+      </Link>
 
       {/* Product Info */}
       <div className="mt-4">
