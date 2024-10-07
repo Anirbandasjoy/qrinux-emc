@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
+import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import React, { useState } from "react";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
@@ -150,13 +151,15 @@ const Cart = () => {
             </div>
 
             <div className="flex flex-col gap-4 mt-6 sm:mt-0">
-              <button className="px-6 py-2 bg-black text-white font-semibold">
+              <Button className="rounded-sm px-11 py-6">
+                {" "}
                 CONTINUE SHOPPING
-              </button>
+              </Button>
               <Link href="/payment">
-                <button className="px-6 py-2 bg-black text-white font-semibold">
+                <Button className="rounded-sm px-11 py-6">
+                  {" "}
                   PROCEED TO CHECKOUT
-                </button>
+                </Button>
               </Link>
             </div>
           </div>

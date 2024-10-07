@@ -7,6 +7,7 @@ import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 
 const Payment = () => {
   const [selectedMethod, setSelectedMethod] = useState("Pay now");
+  console.log(selectedMethod);
 
   return (
     <div className="bg-[#f3f5f7] h-screen pt-28">
