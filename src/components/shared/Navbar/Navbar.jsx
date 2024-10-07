@@ -63,12 +63,12 @@ const Navbar = () => {
           <div className="flex items-center space-x-5  ml-auto">
             <FaSearch className="cursor-pointer text-2xl text-gray-600 hover:text-blue-600" />
             <FaUser className="cursor-pointer text-gray-600 text-2xl hover:text-blue-600" />
-            <div className="relative">
+            <Link href="/cart" className="relative">
               <FaShoppingBag className="cursor-pointer text-gray-600 text-2xl hover:text-blue-600" />
               <span className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full text-xs px-2">
                 2
               </span>
-            </div>
+            </Link>
           </div>
 
           {/* Mobile Menu Toggle */}
