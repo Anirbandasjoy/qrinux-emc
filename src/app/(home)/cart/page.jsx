@@ -153,9 +153,11 @@ const Cart = () => {
               <button className="px-6 py-2 bg-black text-white font-semibold">
                 CONTINUE SHOPPING
               </button>
-              <button className="px-6 py-2 bg-black text-white font-semibold">
-                PROCEED TO CHECKOUT
-              </button>
+              <Link href="/payment">
+                <button className="px-6 py-2 bg-black text-white font-semibold">
+                  PROCEED TO CHECKOUT
+                </button>
+              </Link>
             </div>
           </div>
         </div>
