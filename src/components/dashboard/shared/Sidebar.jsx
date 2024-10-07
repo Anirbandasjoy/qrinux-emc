@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 
 const Sidebar = () => {
@@ -12,7 +13,7 @@ const Sidebar = () => {
     { label: "Canceled Orders (0)", route: "/dashboard/canceled-orders" },
     { label: "My Reviews (2)", route: "/dashboard/my-reviews" },
     { label: "Pending Reviews (2)", route: "/pending-reviews" },
-    { label: "Shipping Address", route: "/shipping-address" },
+    { label: "Shipping Address", route: "/dashboard/shipping-address" },
     { label: "Log Out", route: "/logout" },
   ];
 
@@ -20,7 +21,11 @@ const Sidebar = () => {
     <div>
       <div>
         <ul className="space-y-4">
-          <li className="text-[25px] font-bold cursor-pointer">My Account</li>
+          <Link href="/dashboard">
+            <li className={`text-[25px] font-bold cursor-pointer `}>
+              My Account
+            </li>
+          </Link>
           {menuItems.map((item, index) => (
             <li
               key={index}

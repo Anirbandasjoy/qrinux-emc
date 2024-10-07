@@ -2,20 +2,12 @@
 import Link from "next/link";
 import React, { useState } from "react";
 import { FaSearch, FaUser, FaShoppingBag } from "react-icons/fa";
+import { usePathname } from "next/navigation";
 
 const Navbar = () => {
-  // State to handle mobile menu toggle
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  // State to handle active link
-  const [activeLink, setActiveLink] = useState("Home");
 
-  const handleMenuClick = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
-  };
-
-  const handleLinkClick = (link) => {
-    setActiveLink(link);
-  };
+  const pathname = usePathname();
 
   const navblink = [
     {
@@ -37,21 +29,20 @@ const Navbar = () => {
   ];
 
   return (
-    <div className=" bg-white shadow-sm py-7 fixed w-full z-40 ">
-      <nav className=" container mx-auto">
+    <div className="bg-white shadow-sm py-7 fixed w-full z-40">
+      <nav className="container mx-auto">
         <div className="container mx-auto sm:grid grid-cols-3 flex justify-between items-center px-4 sm:px-0">
           {/* Logo */}
-          <div className="text-2xl font-bold ">Logo</div>
+          <div className="text-2xl font-bold">Logo</div>
 
           {/* Navigation Links (Desktop) */}
-          <ul className="hidden md:flex space-x-10  font-medium mx-auto ">
+          <ul className="hidden md:flex space-x-10 font-medium mx-auto">
             {navblink.map((link) => (
               <Link
                 href={link.path}
                 key={link?.pathName}
-                onClick={() => handleLinkClick(link.pathName)}
                 className={`cursor-pointer ${
-                  activeLink === link ? "text-blue-600" : "text-gray-700"
+                  pathname === link.path ? "text-blue-600" : "text-gray-700"
                 } hover:text-blue-600 text-xl font-medium`}
               >
                 {link.pathName}
@@ -60,7 +51,7 @@ const Navbar = () => {
           </ul>
 
           {/* Icons */}
-          <div className="flex items-center space-x-5  ml-auto">
+          <div className="flex items-center space-x-5 ml-auto">
             <FaSearch className="cursor-pointer text-2xl text-gray-600 hover:text-blue-600" />
             <Link href="/dashboard">
               <FaUser className="cursor-pointer text-gray-600 text-2xl hover:text-blue-600" />
@@ -75,7 +66,7 @@ const Navbar = () => {
 
           {/* Mobile Menu Toggle */}
           <button
-            onClick={handleMenuClick}
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="md:hidden text-gray-600 ml-5 hover:text-blue-600 focus:outline-none"
           >
             <svg
@@ -106,14 +97,9 @@ const Navbar = () => {
               <Link
                 href={link?.path}
                 key={link?.pathName}
-                onClick={() => {
-                  handleLinkClick(link?.pathName);
-                  setIsMobileMenuOpen(false);
-                }}
+                onClick={() => setIsMobileMenuOpen(false)}
                 className={`block py-2 px-4 text-center ${
-                  activeLink === link?.pathName
-                    ? "text-blue-600"
-                    : "text-gray-700"
+                  pathname === link?.path ? "text-blue-600" : "text-gray-700"
                 } hover:bg-gray-100 hover:text-blue-600 cursor-pointer`}
               >
                 {link?.pathName}
